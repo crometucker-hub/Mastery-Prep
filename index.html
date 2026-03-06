@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gimkit | Play</title>
+<style>
+/* Gimkit's signature color palette */
+:root {
+--gim-purple: #5c30b8;
+--gim-dark: #1a0a33;
+--gim-green: #00d68f;
+}
+
+body, html {
+margin: 0; padding: 0; height: 100%;
+background-color: var(--gim-dark);
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+overflow: hidden;
+}
+
+/* Initial "Join" Screen */
+#ui-wrapper {
+display: flex; flex-direction: column; align-items: center; justify-content: center;
+height: 100%; color: white;
+background: linear-gradient(135deg, #2a1052 0%, #1a0a33 100%);
+}
+
+.gim-logo { font-size: 3rem; font-weight: bold; margin-bottom: 20px; }
+
+.join-box {
+background: white; padding: 30px; border-radius: 12px;
+box-shadow: 0 10px 25px rgba(0,0,0,0.3); color: #333;
+width: 300px; text-align: center;
+}
+
+input {
+width: 100%; padding: 12px; margin: 10px 0;
+border: 2px solid #ddd; border-radius: 8px; font-size: 1rem;
+}
+
+.btn-join {
+background-color: var(--gim-purple); color: white;
+border: none; padding: 12px 30px; border-radius: 8px;
+font-size: 1.1rem; font-weight: bold; cursor: pointer;
+transition: transform 0.1s; width: 100%;
+}
+
+.btn-join:active { transform: scale(0.95); }
+
+/* Hidden Game Container */
+#game-container { display: none; width: 100vw; height: 100vh; }
+iframe { width: 100%; height: 100%; border: none; }
+</style>
+</head>
+<body>
+
+<!-- Pseudo-Gimkit Interface -->
+<div id="ui-wrapper">
+<div class="gim-logo">Gimkit</div>
+<div class="join-box">
+<input type="text" placeholder="Enter Game Code" id="gameCode">
+<button class="btn-join" onclick="startGame()">Join</button>
+</div>
+</div>
+
+<!-- Hidden Game Frame -->
+<div id="game-container">
+<!-- Using a public Slope link via iframe -->
+<iframe id="slopeFrame" src=""></iframe>
+</div>
+
+<script>
+function startGame() {
+// Transition from UI to Game
+document.getElementById('ui-wrapper').style.display = 'none';
+document.getElementById('game-container').style.display = 'block';
+
+// Set the iframe source to a known Slope game link
+// You can replace this URL with any available Slope GitHub mirror
+document.getElementById('slopeFrame').src = "https://cgolden15.github.io";
+}
+</script>
+</body>
+</html>
